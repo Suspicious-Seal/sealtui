@@ -1,0 +1,3 @@
+class SealStyleInvalid(Exception):
+    pass
+
