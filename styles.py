@@ -32,4 +32,4 @@ class Color(Style):
         try:
             return self.COLORS[self.args[0]]
         except KeyError:
-            raise errors.SealStyleInvalid(f"Invalid Color: {self.args[0]}"
+            raise errors.SealStyleInvalid(f"Invalid Color: {self.args[0]}")
