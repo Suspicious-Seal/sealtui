@@ -1,4 +1,4 @@
-import styler, errors, helpers
+from sealtui import styler, errors, helpers
 
 class Prompt:
     ENTER = "\r"

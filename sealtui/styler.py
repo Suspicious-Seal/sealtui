@@ -1,4 +1,4 @@
-import styles, errors, helpers
+from sealtui import styles, errors, helpers
 
 def ParseString(string):
     # The job of this function is ONLY to parse the strings into their styles (in string form) 

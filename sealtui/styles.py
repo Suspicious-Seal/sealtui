@@ -1,4 +1,4 @@
-import errors
+from sealtui import errors
 
 class Style:
     def __init__(self, text, args):

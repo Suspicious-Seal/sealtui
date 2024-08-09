@@ -1,4 +1,4 @@
-import styler, styles, errors
+from sealtui import styler, styles, errors
 
 def sealprint(*args, end="\n", flush=True):
     for txt in args:
