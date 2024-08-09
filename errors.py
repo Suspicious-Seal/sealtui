@@ -6,3 +6,6 @@ class SealStyleSyntaxError(Exception):
 
 class SealStyleNotFoundError(Exception):
     pass
+
+class SealStyleArgumentsInvalidError(Exception):
+    pass

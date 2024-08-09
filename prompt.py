@@ -56,11 +56,33 @@ class SearchPrompt(Prompt):
         print(f"+{'-'*(self.maxlen)}+")
         print()
         print(f"+{'-'*(self.maxlen)}+")
+        print()
 
     def prompt(self):
+        searchitems = self.args
+        
+        if type(searchitems) != list:
+            raise errors.SealStyleArgumentsInvalidError(f"Expected list as arguments for SearchPrompt. Got '{type(self.args)}' instead.")
+
         finished=False
         while finished != True:
             finished=self.baseprompt()
-prmpt = ClassicPrompt(">", 30)
+            text = helpers.ExtendText(self.text, self.maxlen)
 
-print(prmpt())
+            helpers.MoveCursor(0,2)
+            print(f"|{text}|")
+
+            helpers.MoveCursor(0,4)
+
+            count=0
+            for item in searchitems:
+                if not self.text in item: continue
+                print(f"|{helpers.ExtendText(item, self.maxlen)}|")
+                count += 1
+
+            if count == 0:
+                print(f"|{helpers.ExtendText('No results', self.maxlen)}|")
+            print(f"+{'-'*(self.maxlen)}+")
+
+            for i in range(len(searchitems)-count):
+                print(f" {' '*self.maxlen} ")
