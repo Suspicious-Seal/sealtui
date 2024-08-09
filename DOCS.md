@@ -41,6 +41,16 @@ Cyan
 DarkCyan
 Purple
 
+**Printing Styles**
+
+To print a style, use the sealtui.core module and import sealprint.
+EXAMPLE:
+import sealtui.core
+sealtui.core.sealprint("your text here...")
+OR:
+from sealtui.core import sealprint
+sealprint("your text here...")
+
 ## Prompts
 All prompts follow a basic format: The class is initialized, the class is called, the class returns a string.
 During class initialization, you can specify that you want to sanitize inputs. This is done using: sanitize=True.
