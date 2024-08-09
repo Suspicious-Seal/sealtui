@@ -1,4 +1,4 @@
-import styles, errors
+import styles, errors, helpers
 
 def ParseString(string):
     # The job of this function is ONLY to parse the strings into their styles (in string form) 
@@ -20,6 +20,15 @@ def ParseString(string):
             stlend = stylestr[1:]
             if len(stlend) < 1: 
                 CurrentStyles = []
+            else:
+                _stlends = stlend.split(" ")
+                for _stlend in _stlends:
+                    indx = helpers.IndexOf(CurrentStyles, _stlend)
+                    if indx < 0:
+                        raise errors.SealStyleSyntaxError(f"""No style
+                            to close. Style: {_stlend} at {_str} in
+                            {string}""")
+                    del CurrentStyles[indx]
 
             # Handle the normal text part (If it exists)
             textstr = _str.split("]")[1]
@@ -38,13 +47,19 @@ def ParseString(string):
 
     return Text
 
-def GetStyle(Style, text, args):
+def GetStyle(Style, args, text):
     STYLES = {
         "bold": styles.Bold,
         "underline": styles.Underline,
+        "color": styles.Color,
     }
 
-    return STYLES[Style](text, args)
+    try:
+        return STYLES[Style](text, args)
+    except KeyError:
+        raise errors.SealStyleNotFoundError(f"""Could not find style {Style}.
+        Style had arguments {args} and text {text}. 
+        Make sure arguments are seperated from the style name using an colon (:)!""")
 
 def StyleString(string):
     parsedstr = ParseString(string)
@@ -53,14 +68,16 @@ def StyleString(string):
     for item in parsedstr:
         curtext = item[0]
 
-        STYLES = []
         styles = item[1]
-        for stl in styles: STYLES.append(GetStyle( stl, curtext, curtext.split(":")[1:] ))
+        
+        for stl in styles:
+            style = stl.split(":")[0]
+            arguments = stl.split(":")[1:]
 
-        for STL in STYLES:
-            curtext = STL()
+            _Style = GetStyle(style, arguments, curtext)
+            curtext = _Style()
 
-        TEXT.append(curtext)
+        TEXT.append(curtext + "\033[0m")
 
     ENDSTR = ""
     for txt in TEXT:
