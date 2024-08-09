@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='sealtui',
-    version='0.1.0',    
+    version='0.2.0',    
     description='A python package for creating cli\'s and tui\'s.',
     url='https://github.com/Suspicious-Seal/sealtui',
     author='Matthew Carmichael',

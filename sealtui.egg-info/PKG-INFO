@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sealtui
-Version: 0.1.0
+Version: 0.2.0
 Summary: A python package for creating cli's and tui's.
 Home-page: https://github.com/Suspicious-Seal/sealtui
 Author: Matthew Carmichael
