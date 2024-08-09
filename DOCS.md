@@ -1,5 +1,12 @@
 # SealTUI Documentation
 
+## Installation
+For easy installation, use
+pip install -i https://test.pypi.org/simple/ sealtui
+This is until our package gets approved on the official pypi, sorry for the inconvience!
+
+For manual installation or building from source, look at **INSTALL.MD**
+
 ## Styling
 All text can be styled. Text in SealTUI is styled using a tag like system, called SealStyle.
  - EXAMPLE: [bold]text[/]
