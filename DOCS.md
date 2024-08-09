@@ -11,6 +11,7 @@ If the first character inside the brackets is a /, all styles inside will be rem
 
 
 **Arguments**
+
 Some styles need arguments, like color.
 Arguments are specified with the colon :.
  - All arguments come AFTER the style name.
